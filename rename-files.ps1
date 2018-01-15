@@ -5,3 +5,6 @@ get-childitem | Where-Object {$_.Name -like 'old-filename.part*'} | select-objec
 
 ##rename files
 get-childitem | Where-Object {$_.Name -like 'old-filename.part*'} | Rename-Item -NewName {$_.DirectoryName + "\" + $_.Name -replace 'old-filename', 'new-filename'}
+
+##rename command2
+Get-ChildItem | Rename-Item -NewName {$_.DirectoryName +"\" + $_.Name.Replace("learning-d3-","")}

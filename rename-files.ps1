@@ -18,3 +18,15 @@ ForEach-Object {
     $newName = "Q" + $count + ".PNG"
     $_ | Rename-Item -NewName { $_.DirectoryName + "\" + $_.Name.Replace($oldName, $newName) }
     }
+
+#rename files in bulk with number sequence 2
+$count = 0
+Get-ChildItem | Where-Object { $_.Extension -eq ".PNG"} | Sort-Object -Property LastWriteTime -Descending |
+ForEach-Object { 
+    $count++
+    $oldName = $_.Name
+    $newName = "Q0" + $count + ".PNG"
+    $newDirName = $_.DirectoryName + "\"
+    ##Write-Host $newDirName
+    $_ | Rename-Item -NewName { $newDirName + $_.Name.Replace($oldName, $newName) }
+    }

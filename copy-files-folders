@@ -1,0 +1,5 @@
+##copy all files and folders from source to destination
+$sourceRoot = "C:\source-dir"
+$destinationRoot = "C:\target-dir"
+
+Copy-Item -Path $sourceRoot -Recurse -Destination $destinationRoot -Container 
